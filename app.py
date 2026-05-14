@@ -17,6 +17,9 @@ st.set_page_config(
 )
 
 from utils.style import CSS, hero, sec, metric_row, cluster_badge, insight, risk_badge
+from style import CSS, hero, sec, metric_row, cluster_badge, insight, risk_badge
+from data_loader import load_cluster_data, build_synthetic_model_data, train_models, FITUR, FITUR_LABEL, TARGETS, CLUSTER_LABEL, CLUSTER_COLOR
+from charts import province_map, pca_scatter, cluster_profile_bar, cluster_radar, arps_bar, prediction_gauge, feature_importance_bar
 from utils.data_loader import (
     load_cluster_data, build_synthetic_model_data, train_models,
     FITUR, FITUR_LABEL, TARGETS, CLUSTER_LABEL, CLUSTER_COLOR,
