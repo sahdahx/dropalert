@@ -75,16 +75,21 @@ PROV_COORDS = {
     'PAPUA TENGAH': (-4.000, 136.500), 'PAPUA PEGUNUNGAN': (-4.500, 139.500),
 }
 
-
 def load_cluster_data():
-    path = os.path.join(os.path.dirname(__file__), '..', 'data', 'cluster_provinsi.csv')
+    import os
+    import pandas as pd
+
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(base_dir, "..", "dropalert_cluster_provinsi.csv")
+
     df = pd.read_csv(path)
+
     df['Provinsi'] = df['Provinsi'].str.upper().str.strip()
     df['cluster_label'] = df['cluster'].astype(int).map(CLUSTER_LABEL)
     df['lat'] = df['Provinsi'].map(lambda p: PROV_COORDS.get(p, (0, 118))[0])
     df['lon'] = df['Provinsi'].map(lambda p: PROV_COORDS.get(p, (0, 118))[1])
-    return df
 
+    return df
 
 def build_synthetic_model_data(df_cluster):
     """
